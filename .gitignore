@@ -83,6 +83,7 @@ fabric.properties
 # gewoon volledig .idea?
 .idea/*
 Labo 1/.idea/*
+.idea/
 
 
 # End of https://www.gitignore.io/api/intellij
