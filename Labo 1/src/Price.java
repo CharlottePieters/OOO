@@ -1,5 +1,5 @@
 public interface Price {
 
-    public double getPrice(int days);
+    double getPrice(int days);
 
 }

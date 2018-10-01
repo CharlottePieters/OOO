@@ -2,13 +2,18 @@
 import java.util.ArrayList;
 
 
-public class Shop {
+public class Shop implements Price{
 	private ArrayList<Product> products;
+	private ArrayList<Product> shoppingCart;
+	private Price pcStrategy;
 
 
 	public Shop()
 	{
 		products = new ArrayList<>();
+		shoppingCart = new ArrayList<>();
+		pcStrategy = new Price();
+
 	}
 
 
@@ -52,5 +57,10 @@ public class Shop {
 			int days = Integer.parseInt(daysString);
 			return this.products.get(idx).getPrice(days);
 		}
+	}
+
+	@Override
+	public double getPrice(int days) {
+		return 0;
 	}
 }
