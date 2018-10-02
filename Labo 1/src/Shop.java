@@ -2,18 +2,11 @@
 import java.util.ArrayList;
 
 
-public class Shop implements Price{
+public class Shop {
 	private ArrayList<Product> products;
-	private ArrayList<Product> shoppingCart;
-	private Price pcStrategy;
 
-
-	public Shop()
-	{
+	public Shop() {
 		products = new ArrayList<>();
-		shoppingCart = new ArrayList<>();
-		pcStrategy = new Price();
-
 	}
 
 
@@ -28,7 +21,7 @@ public class Shop implements Price{
 		}
 	}
 	
-	public Product showProduct(String id){
+	public Product getProduct(String id){
 		int idx = -1;
 		boolean found = false;
 		for(int i = 0; i < this.products.size() && !found; i++) {
@@ -37,14 +30,13 @@ public class Shop implements Price{
 				found = true;
 			}
 		}
-		if(found)
-		{
+		if(found) {
 			return this.products.get(idx);
 		}
 		return null;
 	}
 
-	public double showPrice(String id, String daysString){
+	public double getPrice(String id, int days){
 		int idx = -1;
 		boolean found = false;
 		for(int i = 0; i < this.products.size() && !found; i++){
@@ -54,13 +46,11 @@ public class Shop implements Price{
 			}
 		}
 		if(found){
-			int days = Integer.parseInt(daysString);
 			return this.products.get(idx).getPrice(days);
 		}
+		else{
+		    throw new IllegalArgumentException("This product is not in the shop.");
+        }
 	}
 
-	@Override
-	public double getPrice(int days) {
-		return 0;
-	}
 }

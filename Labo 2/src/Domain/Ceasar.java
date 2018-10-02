@@ -7,6 +7,8 @@ public class Ceasar implements Encryptor{
         this.setKey(key);
     }
 
+    public Ceasar() { this.setKey(13);}
+
     public void setKey(int key) {
         this.key = key;
     }

@@ -1,4 +1,4 @@
-public abstract class Product implements Price{
+public abstract class Product {
     private String title;
     private String id;
 
@@ -19,8 +19,5 @@ public abstract class Product implements Price{
 
     public String getId() {return this.id; }
 
-    @Override
-    public double getPrice(int days) {
-        return 0;
-    }
+    public abstract double getPrice(int days);
 }

@@ -4,7 +4,6 @@ public class Game extends Product {
         super(title, id);
     }
 
-    @Override
     public double getPrice(int days) {
         return days * 3;
     }
