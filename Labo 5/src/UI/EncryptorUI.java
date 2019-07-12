@@ -22,16 +22,25 @@ public class EncryptorUI {
 
                 String menu2 = "What algorithm would you like to use?\n\n";
                 menu2 += "\t1. Caesar Chipher\n";
-                menu2 += "\t2. Mirror";
+                menu2 += "\t2. Mirror\n";
+                menu2 += "\t3. Random Cypher";
 
                 int encryptorNum = Integer.parseInt(JOptionPane.showInputDialog(menu2));
 
-                if (encryptorNum == 1) {
-                    int key = Integer.parseInt(JOptionPane.showInputDialog("What key would you like to use?"));
-                    this.encryptor = new Ceasar(key);
-                } else if (encryptorNum == 2) {
-                    this.encryptor = new Mirror();
+                AlgorithmFactory factory = new AlgorithmFactory();
+                Algorithm algorithm = null;
+
+                if (encryptorNum == 1){
+                    algorithm = Algorithm.CEASAR;
                 }
+                else if (encryptorNum == 2){
+                    algorithm = Algorithm.MIRROR;
+                }
+                else if (encryptorNum == 3){
+                    algorithm = Algorithm.RANDOMCYPHER;
+                }
+
+                this.encryptor = factory.createEncryptor(algorithm);
 
                 String menu3 = "Please insert your text.";
 
@@ -45,10 +54,6 @@ public class EncryptorUI {
                 }
             }
         }
-    }
-
-    public void changeEncryptor(Encryptor encryptor){
-        this.encryptor = encryptor;
     }
 
     public void encrypt() {
